@@ -8,7 +8,21 @@ const path = require("path");
 // });
 
 // public폴더에 있는 정적 파일 서빙
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+
+// CRUD테스트
+app.use(express.json()); // JSON 데이터를 처리
+
+app.get("/", (req, res) => {
+  res.json({ message: "GET Response 성공!!" });
+});
+
+app.post("/info", (req, res) => {
+  // 요청 본문에서 name과 age 값을 추출
+  const { name, age } = req.body;
+
+  res.json({ message: `Post Response 성공!! name: ${name} age: ${age}` });
+});
 
 // 서버를 8080번 포트에서 실행
 app.listen(8080, () => {
