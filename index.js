@@ -7,11 +7,9 @@ const path = require("path");
 //   res.send("Hello world");
 // });
 
-// public폴더에 있는 정적 파일 서빙
-// app.use(express.static(path.join(__dirname, "public")));
-
 // CRUD테스트
 app.use(express.json()); // JSON 데이터를 처리
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.json({ message: "GET Response 성공!!" });
